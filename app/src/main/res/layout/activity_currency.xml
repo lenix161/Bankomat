@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CurrencyActivity">
+
+
+    <TextView
+        android:id="@+id/balance_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Баланс"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <Button
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="назад"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/usd_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="USD: "
+        app:layout_constraintBottom_toTopOf="@+id/back_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/balance_title" />
+
+    <TextView
+        android:id="@+id/usd_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@+id/usd_title"
+        app:layout_constraintStart_toEndOf="@+id/usd_title"
+        app:layout_constraintTop_toTopOf="@+id/usd_title" />
+
+    <TextView
+        android:id="@+id/rub_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RUB: "
+        app:layout_constraintBottom_toTopOf="@+id/usd_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/balance_title" />
+
+    <TextView
+        android:id="@+id/rub_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@+id/rub_title"
+        app:layout_constraintStart_toEndOf="@+id/rub_title"
+        app:layout_constraintTop_toTopOf="@+id/rub_title" />
+
+    <TextView
+        android:id="@+id/eur_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EUR: "
+        app:layout_constraintBottom_toTopOf="@+id/back_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usd_title" />
+
+    <TextView
+        android:id="@+id/eur_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@+id/eur_title"
+        app:layout_constraintStart_toEndOf="@+id/eur_title"
+        app:layout_constraintTop_toTopOf="@+id/eur_title" />
+</androidx.constraintlayout.widget.ConstraintLayout>
