@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <Button
         android:id="@+id/insert_card_btn"
@@ -39,4 +39,14 @@
         app:layout_constraintBottom_toBottomOf="@+id/wait_text_view"
         app:layout_constraintStart_toEndOf="@+id/wait_text_view"
         app:layout_constraintTop_toTopOf="@+id/wait_text_view" />
+
+    <ImageView
+        android:id="@+id/loadingView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wait_text_view"
+        app:srcCompat="@drawable/ic_baseline_sync_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
