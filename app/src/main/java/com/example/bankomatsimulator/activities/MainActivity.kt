@@ -8,6 +8,7 @@ import android.os.Handler
 import android.view.View
 import android.widget.ImageView
 import com.example.bankomatsimulator.databinding.ActivityMainBinding
+import kotlinx.coroutines.NonCancellable.start
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,10 +21,20 @@ class MainActivity : AppCompatActivity() {
 
         binding.loadingView.visibility = View.INVISIBLE
 
+       binding.logo.animate()
+            .scaleX(0.7f)
+            .scaleY(0.7f)
+            .setDuration(1000)
+
+
 
         binding.insertCardBtn.setOnClickListener {
             binding.waitTextView.text = "Ожидайте"
             loadingAnimation(binding.loadingView)
+            binding.insertCardBtn.animate()
+                .alpha(0f)
+                .setDuration(1000)
+                .start()
             val handler = Handler()
             handler.postDelayed({
                 val intent = Intent(this, MenuActivity::class.java)
@@ -33,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun loadingAnimation(view:ImageView){
+    private fun loadingAnimation(view:ImageView){
         view.visibility = View.VISIBLE
         view.animate()
             .rotationBy(-360f)

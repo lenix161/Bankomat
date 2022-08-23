@@ -29,6 +29,11 @@ class MenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.getMoneyBtn.setOnClickListener {
+            val intent = Intent(this, GetMoneyActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.addMoneyBtn.setOnClickListener {
             val intent = Intent(this, AddMoneyActivity::class.java)
             startActivity(intent)

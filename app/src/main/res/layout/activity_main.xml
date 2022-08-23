@@ -49,4 +49,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wait_text_view"
         app:srcCompat="@drawable/ic_baseline_sync_24" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toTopOf="@+id/insert_card_btn"
+        app:layout_constraintEnd_toEndOf="@+id/insert_card_btn"
+        app:layout_constraintStart_toStartOf="@+id/insert_card_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_attach_money_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
