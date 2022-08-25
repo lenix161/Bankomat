@@ -4,6 +4,7 @@
     package="com.example.bankomatsimulator" >
 
     <application
+        android:name=".activities.App"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:icon="@drawable/ic_baseline_attach_money_24"
@@ -37,7 +38,7 @@
             android:exported="true"/>
 
         <activity
-            android:name=".activities.RecycleActivity"
+            android:name=".activities.recycleView.RecycleActivity"
             android:exported="true"/>
 
         <activity

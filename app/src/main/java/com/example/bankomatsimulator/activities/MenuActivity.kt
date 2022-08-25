@@ -5,6 +5,7 @@ import android.content.IntentFilter
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.bankomatsimulator.activities.recycleView.RecycleActivity
 import com.example.bankomatsimulator.databinding.ActivityMenuBinding
 
 class MenuActivity : AppCompatActivity() {
