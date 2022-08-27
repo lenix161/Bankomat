@@ -5,8 +5,10 @@ import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import com.example.bankomatsimulator.activities.recycleView.Data
 import com.example.bankomatsimulator.databinding.ActivityMainBinding
 import kotlinx.coroutines.NonCancellable.start
 
@@ -20,6 +22,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loadingView.visibility = View.INVISIBLE
+
+        val data = Data
+        data.getInternetData("usd", this)
+        data.getInternetData("eur", this)
 
        binding.logo.animate()
             .scaleX(0.7f)

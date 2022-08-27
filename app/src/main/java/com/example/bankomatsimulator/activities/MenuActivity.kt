@@ -24,11 +24,7 @@ class MenuActivity : AppCompatActivity() {
         binding.rubValue.text = prefs.getInt("RUB", 0).toString()
         binding.usdValue.text = prefs.getInt("USD", 0).toString()
         binding.eurValue.text = prefs.getInt("EUR", 0).toString()
-
-        binding.balanceBtn.setOnClickListener {
-            val intent = Intent(this , CurrencyActivity::class.java)
-            startActivity(intent)
-        }
+        
 
         binding.getMoneyBtn.setOnClickListener {
             val intent = Intent(this, GetMoneyActivity::class.java)

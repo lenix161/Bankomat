@@ -38,16 +38,23 @@ class GetMoneyActivity : AppCompatActivity() {
         binding.applyBtn.setOnClickListener {
             if (binding.editSum.length() > 0){
                 val a = binding.editSum.text.toString().toInt()
-                if (a >= 0){
+                if (a > 0){
                     value = prefs.getInt(cur, 0)
-                    value -= a
-                    editor.putInt(cur, value)
-                    editor.apply()
-                    binding.rubTitle.text = "$cur: "
-                    binding.rubValue.text = prefs.getInt(cur, 0).toString()
-                    binding.editSum.text.clear()
-                    val toast = Toast.makeText(this, "Со счета снято $a $cur", Toast.LENGTH_SHORT)
-                    toast.show()
+                    if (value - a < 0){
+                        val toast = Toast.makeText(this, "На счете недостаточно седств",
+                            Toast.LENGTH_SHORT)
+                        toast.show()
+                    } else {
+                        value -= a
+                        editor.putInt(cur, value)
+                        editor.apply()
+                        binding.rubTitle.text = "$cur: "
+                        binding.rubValue.text = prefs.getInt(cur, 0).toString()
+                        binding.editSum.text.clear()
+                        val toast =
+                            Toast.makeText(this, "Со счета снято $a $cur", Toast.LENGTH_SHORT)
+                        toast.show()
+                    }
                 }else {
                     val toast = Toast.makeText(this, "Неправильно введена сумма", Toast.LENGTH_SHORT)
                     toast.show()

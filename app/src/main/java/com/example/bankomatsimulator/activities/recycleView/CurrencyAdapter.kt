@@ -1,35 +1,35 @@
 package com.example.bankomatsimulator.activities.recycleView
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bankomatsimulator.R
 import com.example.bankomatsimulator.databinding.ListItemBinding
 
 class CurrencyAdapter: RecyclerView.Adapter<CurrencyAdapter.CurViewHolder>() {
 
-    class CurViewHolder(val binding: ListItemBinding): RecyclerView.ViewHolder(binding.root)
+    private var currencies = Data.curList
 
-    var currencies: List<Currency> = emptyList()
-        set(newValue){
-            field = newValue
-            notifyDataSetChanged()
+    class CurViewHolder(item: View): RecyclerView.ViewHolder(item){
+        val binding = ListItemBinding.bind(item)
+
+        fun bind(currency: CurrencyModel){
+            binding.curIcon.setImageResource(currency.icon)
+            binding.curName.text = currency.name
+            binding.curValue.text = currency.cost.toString()
+
+
         }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ListItemBinding.inflate(inflater, parent, false)
-        return  CurViewHolder(binding)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        return  CurViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CurViewHolder, position: Int) {
-        var currency = currencies[position]
-        with(holder.binding){
-            curIcon.setImageResource(R.drawable.ic_baseline_attach_money_24)
-            curName.text = currency.name
-            curValue.text = currency.cost.toString()
-        }
+        holder.bind(currencies[position])
     }
 
     override fun getItemCount(): Int {
