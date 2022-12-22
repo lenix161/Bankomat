@@ -11,7 +11,7 @@ class PowerReceiver : BroadcastReceiver() {
         Log.v("power", "off")
         if(Intent.ACTION_POWER_DISCONNECTED == intent.action){
             Log.v("power", "off")
-            val message = "Зарядке пизда"
+            val message = "Зарядки нет"
             val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
             toast.show()
         }
