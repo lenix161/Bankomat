@@ -1,4 +1,4 @@
-package com.example.bankomatsimulator.activities.recycleView
+package com.example.bankomatsimulator.recycleView
 
 data class CurrencyModel(
     val icon: Int,

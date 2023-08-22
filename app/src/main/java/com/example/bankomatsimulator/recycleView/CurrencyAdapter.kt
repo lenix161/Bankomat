@@ -1,9 +1,10 @@
-package com.example.bankomatsimulator.activities.recycleView
+package com.example.bankomatsimulator.recycleView
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bankomatsimulator.Data
 import com.example.bankomatsimulator.R
 import com.example.bankomatsimulator.databinding.ListItemBinding
 

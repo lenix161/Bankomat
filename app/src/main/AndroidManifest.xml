@@ -33,11 +33,15 @@
             android:exported="true"/>
 
         <activity
-            android:name=".activities.recycleView.RecycleActivity"
+            android:name=".activities.CurrenciesListActivity"
             android:exported="true"/>
 
         <activity
             android:name=".activities.GetMoneyActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".activities.ExchangeActivity"
             android:exported="true"/>
 
 

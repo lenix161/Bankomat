@@ -5,7 +5,7 @@ import android.content.IntentFilter
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.bankomatsimulator.activities.recycleView.RecycleActivity
+import com.example.bankomatsimulator.PowerReceiver
 import com.example.bankomatsimulator.databinding.ActivityMenuBinding
 
 class MenuActivity : AppCompatActivity() {
@@ -19,13 +19,32 @@ class MenuActivity : AppCompatActivity() {
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setUIBehavior()
+        loadBankAccount()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val filter = IntentFilter(Intent.ACTION_POWER_DISCONNECTED)
+        registerReceiver(PowerReceiver(), filter)
+
+        loadBankAccount()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(PowerReceiver())
+    }
+
+    private fun loadBankAccount() {
         prefs = getSharedPreferences("settings", MODE_PRIVATE)
 
         binding.rubValue.text = prefs.getInt("RUB", 0).toString()
         binding.usdValue.text = prefs.getInt("USD", 0).toString()
         binding.eurValue.text = prefs.getInt("EUR", 0).toString()
-        
+    }
 
+    private fun setUIBehavior() {
         binding.getMoneyBtn.setOnClickListener {
             val intent = Intent(this, GetMoneyActivity::class.java)
             startActivity(intent)
@@ -37,25 +56,13 @@ class MenuActivity : AppCompatActivity() {
         }
 
         binding.listBtn.setOnClickListener {
-            val intent = Intent(this, RecycleActivity::class.java)
+            val intent = Intent(this, CurrenciesListActivity::class.java)
             startActivity(intent)
         }
-    }
 
-    override fun onResume() {
-        super.onResume()
-        val filter = IntentFilter(Intent.ACTION_POWER_DISCONNECTED)
-        registerReceiver(PowerReceiver(), filter)
-
-        prefs = getSharedPreferences("settings", MODE_PRIVATE)
-
-        binding.rubValue.text = prefs.getInt("RUB", 0).toString()
-        binding.usdValue.text = prefs.getInt("USD", 0).toString()
-        binding.eurValue.text = prefs.getInt("EUR", 0).toString()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        unregisterReceiver(PowerReceiver())
+        binding.exchangeButton.setOnClickListener {
+            val intent = Intent(this, ExchangeActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
