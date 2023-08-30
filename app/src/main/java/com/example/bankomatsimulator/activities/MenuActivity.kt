@@ -39,9 +39,9 @@ class MenuActivity : AppCompatActivity() {
     private fun loadBankAccount() {
         prefs = getSharedPreferences("settings", MODE_PRIVATE)
 
-        binding.rubValue.text = prefs.getInt("RUB", 0).toString()
-        binding.usdValue.text = prefs.getInt("USD", 0).toString()
-        binding.eurValue.text = prefs.getInt("EUR", 0).toString()
+        binding.rubValue.text = prefs.getFloat("RUB", 0F).toString()
+        binding.usdValue.text = prefs.getFloat("USD", 0F).toString()
+        binding.eurValue.text = prefs.getFloat("EUR", 0F).toString()
     }
 
     private fun setUIBehavior() {

@@ -9,10 +9,13 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import com.example.bankomatsimulator.Data
 import com.example.bankomatsimulator.databinding.ActivityExchangeMoneyBinding
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 
 class ExchangeActivity : AppCompatActivity() {
@@ -98,12 +101,41 @@ class ExchangeActivity : AppCompatActivity() {
                             result = inputted * Data.currencyResponse.Valute.EUR.Value
                         }
                     }
-
-                    binding.toEditText.setText(result.toString())
+                    val toEdittext = BigDecimal(result).setScale(2, RoundingMode.HALF_EVEN)
+                    binding.toEditText.setText(toEdittext.toString())
                 } else {
                     binding.toEditText.setText("")
                 }
             }
         })
+
+        binding.exchangeButton.setOnClickListener {
+            val from = binding.fromEditText.text.toString().toFloat()
+            val to = binding.toEditText.text.toString().toFloat()
+
+            val balanceFrom = prefs.getFloat(curFrom, 0F)
+            val balanceTo = prefs.getFloat(curTo, 0F)
+            Log.i("MyLog", to.toString())
+            Log.i("MyLog", balanceTo.toString())
+
+            if (balanceFrom < from) {
+                Toast.makeText(this, "Недостаточно средств", Toast.LENGTH_SHORT).show()
+            } else {
+                val editor = prefs.edit()
+
+                val newBalanceFrom = balanceFrom - from
+                val newBalanceTo = balanceTo + to
+
+                editor.putFloat(curFrom, newBalanceFrom)
+                editor.putFloat(curTo, newBalanceTo)
+                editor.apply()
+
+                binding.fromEditText.setText("")
+
+                Toast.makeText(this, "$curFrom успешно переведены в $curTo", Toast.LENGTH_SHORT).show()
+            }
+
+
+        }
     }
 }

@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edit_sum" />
 
     <TextView
-        android:id="@+id/rub_title"
+        android:id="@+id/valute_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -65,13 +65,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/rub_value"
+        android:id="@+id/valute_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/rub_title"
-        app:layout_constraintStart_toEndOf="@+id/rub_title"
-        app:layout_constraintTop_toTopOf="@+id/rub_title" />
+        app:layout_constraintBottom_toBottomOf="@+id/valute_title"
+        app:layout_constraintStart_toEndOf="@+id/valute_title"
+        app:layout_constraintTop_toTopOf="@+id/valute_title" />
 
     <Button
         android:id="@+id/back_btn"

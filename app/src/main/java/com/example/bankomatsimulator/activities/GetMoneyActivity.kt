@@ -13,7 +13,7 @@ class GetMoneyActivity : AppCompatActivity() {
     private lateinit var prefs: SharedPreferences
 
     var cur = ""
-    var value = 0
+    var value = 0F
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,28 +28,30 @@ class GetMoneyActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
                 val item = parent.getItemAtPosition(pos)
                 cur = item.toString()
+                binding.valuteTitle.text = "$cur: "
+                binding.valuteValue.text = prefs.getFloat(cur, 0F).toString()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
-        binding.rubTitle.text = "RUB: "
-        binding.rubValue.text = prefs.getInt("RUB", 0).toString()
+        binding.valuteTitle.text = "RUB: "
+        binding.valuteValue.text = prefs.getFloat("RUB", 0F).toString()
 
         binding.applyBtn.setOnClickListener {
             if (binding.editSum.length() > 0){
-                val a = binding.editSum.text.toString().toInt()
+                val a = binding.editSum.text.toString().toFloat()
                 if (a > 0){
-                    value = prefs.getInt(cur, 0)
+                    value = prefs.getFloat(cur, 0F)
                     if (value - a < 0){
                         val toast = Toast.makeText(this, "На счете недостаточно седств",
                             Toast.LENGTH_SHORT)
                         toast.show()
                     } else {
                         value -= a
-                        editor.putInt(cur, value)
+                        editor.putFloat(cur, value)
                         editor.apply()
-                        binding.rubTitle.text = "$cur: "
-                        binding.rubValue.text = prefs.getInt(cur, 0).toString()
+                        binding.valuteTitle.text = "$cur: "
+                        binding.valuteValue.text = prefs.getFloat(cur, 0F).toString()
                         binding.editSum.text.clear()
                         val toast =
                             Toast.makeText(this, "Со счета снято $a $cur", Toast.LENGTH_SHORT)
